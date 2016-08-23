@@ -80,7 +80,7 @@ impl TransportStream for TcpStream {
 }
 
 impl<T> SendFrame for T
-    where T: TransportStream
+    where T: Write
 {
     fn send_frame<F: FrameIR>(&mut self, frame: F) -> HttpResult<()> {
         let mut buf = io::Cursor::new(Vec::with_capacity(1024));
