@@ -420,7 +420,7 @@ impl HttpConnection {
     }
 
     /// Private helper method that actually handles a received frame.
-    fn handle_frame<Sess: Session>(&mut self,
+    pub fn handle_frame<Sess: Session>(&mut self,
                                    frame: HttpFrame,
                                    session: &mut Sess)
                                    -> HttpResult<()> {
