@@ -255,6 +255,13 @@ impl<'a> RawFrame<'a> {
         Some(raw.into())
     }
 
+    /// Convert content to owned.
+    pub fn into_static(self) -> RawFrame<'static> {
+        RawFrame {
+            raw_content: self.raw_content.into_owned().into()
+        }
+    }
+
     /// Returns the total length of the `RawFrame`, including both headers, as well as the entire
     /// payload.
     #[inline]
