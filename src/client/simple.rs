@@ -34,10 +34,10 @@ use http::client::{ClientConnection, HttpConnect, RequestStream, ClientStream};
 ///
 /// ```no_run
 /// use std::net::TcpStream;
-/// use solicit::http::HttpScheme;
-/// use solicit::http::connection::HttpConnection;
-/// use solicit::http::client::write_preface;
-/// use solicit::client::SimpleClient;
+/// use solicit_fork::http::HttpScheme;
+/// use solicit_fork::http::connection::HttpConnection;
+/// use solicit_fork::http::client::write_preface;
+/// use solicit_fork::client::SimpleClient;
 /// use std::str;
 ///
 /// // Prepare a stream manually... We must write the preface ourselves in this case.
@@ -70,8 +70,8 @@ use http::client::{ClientConnection, HttpConnect, RequestStream, ClientStream};
 /// to establish a new connection.
 ///
 /// ```no_run
-/// use solicit::http::client::CleartextConnector;
-/// use solicit::client::SimpleClient;
+/// use solicit_fork::http::client::CleartextConnector;
+/// use solicit_fork::client::SimpleClient;
 /// use std::str;
 ///
 /// // Connect to an HTTP/2 aware server

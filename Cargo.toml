@@ -1,6 +1,6 @@
 [package]
 
-name = "solicit"
+name = "solicit-fork"
 version = "0.4.4"
 authors = ["Marko Lalic <marko.lalic@gmail.com>"]
 

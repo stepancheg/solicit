@@ -40,14 +40,13 @@ impl StreamFactory for SimpleFactory {
 /// # Examples
 ///
 /// ```no_run
-/// extern crate solicit;
 /// use std::str;
 /// use std::net::{TcpListener, TcpStream};
 /// use std::thread;
 ///
-/// use solicit::server::SimpleServer;
+/// use solicit_fork::server::SimpleServer;
 ///
-/// use solicit::http::{Response, Header};
+/// use solicit_fork::http::{Response, Header};
 ///
 /// fn main() {
 ///     fn handle_client(stream: TcpStream) {

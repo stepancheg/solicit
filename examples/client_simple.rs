@@ -3,7 +3,7 @@
 //! This is a simple implementation of an HTTP/2 client, built on top of the API of `solicit::http`
 //! that performs all IO in the main thread.
 
-extern crate solicit;
+extern crate solicit_fork as solicit;
 
 use std::env;
 use std::str;

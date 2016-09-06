@@ -6,7 +6,7 @@
 //!
 //! Only for demonstration purposes.
 
-extern crate solicit;
+extern crate solicit_fork as solicit;
 
 use std::str;
 use std::net::{TcpListener, TcpStream};

@@ -599,8 +599,8 @@ impl ClientService {
 /// # Example
 ///
 /// ```no_run
-/// use solicit::client::Client;
-/// use solicit::http::client::CleartextConnector;
+/// use solicit_fork::client::Client;
+/// use solicit_fork::http::client::CleartextConnector;
 /// use std::thread;
 /// use std::str;
 ///

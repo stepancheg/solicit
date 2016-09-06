@@ -320,9 +320,9 @@ impl HttpConnection {
     /// # Example
     ///
     /// ```rust
-    /// use solicit::http::{HttpScheme, HttpResult};
-    /// use solicit::http::frame::FrameIR;
-    /// use solicit::http::connection::{HttpConnection, SendFrame};
+    /// use solicit_fork::http::{HttpScheme, HttpResult};
+    /// use solicit_fork::http::frame::FrameIR;
+    /// use solicit_fork::http::connection::{HttpConnection, SendFrame};
     /// struct FakeSender;
     /// impl SendFrame for FakeSender {
     ///     fn send_frame<F: FrameIR>(&mut self, frame: F) -> HttpResult<()> {

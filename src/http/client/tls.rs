@@ -10,8 +10,8 @@
 //!
 //! ```no_run
 //! // Remember to enable the "tls" feature for `solicit`
-//! use solicit::http::client::tls::TlsConnector;
-//! use solicit::client::SimpleClient;
+//! use solicit_fork::http::client::tls::TlsConnector;
+//! use solicit_fork::client::SimpleClient;
 //! use std::str;
 //!
 //! // Connect to an HTTP/2 aware server
@@ -60,8 +60,8 @@ use openssl::ssl::SslMethod;
 /// Issue a GET request over `https` using the `TlsConnector`
 ///
 /// ```no_run
-/// use solicit::http::client::tls::TlsConnector;
-/// use solicit::client::SimpleClient;
+/// use solicit_fork::http::client::tls::TlsConnector;
+/// use solicit_fork::client::SimpleClient;
 /// use std::str;
 ///
 /// // Connect to an HTTP/2 aware server

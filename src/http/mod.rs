@@ -117,7 +117,7 @@ impl<'n, 'v> PartialEq<OwnedHeader> for Header<'n, 'v> {
 /// A new `Header` can be created by providing an owned or borrowed name, as well as value:
 ///
 /// ```rust
-/// use solicit::http::Header;
+/// use solicit_fork::http::Header;
 /// // Name and value both borrowed (static) slices.
 /// let h1 = Header::new(b":method", b"GET");
 /// assert_eq!(h1.name(), &b":method"[..]);
@@ -453,7 +453,7 @@ impl WindowSize {
     /// # Examples
     ///
     /// ```rust
-    /// use solicit::http::WindowSize;
+    /// use solicit_fork::http::WindowSize;
     ///
     /// let mut window_size = WindowSize::new(65_535);
     /// assert_eq!(window_size.size(), 65_535);
@@ -494,7 +494,7 @@ impl WindowSize {
     /// # Example
     ///
     /// ```rust
-    /// use solicit::http::WindowSize;
+    /// use solicit_fork::http::WindowSize;
     ///
     /// let mut window_size = WindowSize::new(65_535);
     /// assert_eq!(window_size.size(), 65_535);

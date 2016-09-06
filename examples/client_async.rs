@@ -1,4 +1,4 @@
-extern crate solicit;
+extern crate solicit_fork as solicit;
 
 use solicit::http::Header;
 use solicit::client::Client;
