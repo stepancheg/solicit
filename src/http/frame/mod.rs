@@ -278,6 +278,10 @@ impl<'a> RawFrame<'a> {
         })
     }
 
+    pub fn get_stream_id(&self) -> StreamId {
+        self.header().3
+    }
+
     /// Returns a slice representing the payload of the `RawFrame`.
     pub fn payload(&self) -> &[u8] {
         &self.raw_content[9..]

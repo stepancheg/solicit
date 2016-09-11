@@ -74,6 +74,20 @@ impl<'a> HttpFrame<'a> {
         //       taken (e.g. responding with a PROTOCOL_ERROR).
         Frame::from_raw(&raw_frame).ok_or(HttpError::InvalidFrame)
     }
+
+    /// Get stream id, zero for special frames
+    pub fn get_stream_id(&self) -> StreamId {
+        match self {
+            &HttpFrame::DataFrame(ref f) => f.get_stream_id(),
+            &HttpFrame::HeadersFrame(ref f) => f.get_stream_id(),
+            &HttpFrame::RstStreamFrame(ref f) => f.get_stream_id(),
+            &HttpFrame::SettingsFrame(ref f) => f.get_stream_id(),
+            &HttpFrame::PingFrame(ref f) => f.get_stream_id(),
+            &HttpFrame::GoawayFrame(ref f) => f.get_stream_id(),
+            &HttpFrame::WindowUpdateFrame(ref f) => f.get_stream_id(),
+            &HttpFrame::UnknownFrame(ref f) => f.get_stream_id(),
+        }
+    }
 }
 
 /// The enum represents the success status of the operation of sending a next data chunk on an
