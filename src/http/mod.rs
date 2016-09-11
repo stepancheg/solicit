@@ -95,6 +95,19 @@ impl_from_static_size_array!(
     8,
     9,
     10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
 );
 
 impl<'n, 'v> PartialEq<Header<'n, 'v>> for OwnedHeader {
