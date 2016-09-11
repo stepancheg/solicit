@@ -110,6 +110,27 @@ impl_from_static_size_array!(
     23,
 );
 
+impl<'a> From<String> for HeaderPart<'a> {
+    fn from(s: String) -> HeaderPart<'a> {
+        From::from(s.into_bytes())
+    }
+}
+
+impl<'a> From<&'a str> for HeaderPart<'a> {
+    fn from(s: &'a str) -> HeaderPart<'a> {
+        From::from(s.as_bytes())
+    }
+}
+
+impl<'a> From<Cow<'a, str>> for HeaderPart<'a> {
+    fn from(cow: Cow<'a, str>) -> HeaderPart<'a> {
+        match cow {
+            Cow::Borrowed(s) => From::from(s),
+            Cow::Owned(s) => From::from(s),
+        }
+    }
+}
+
 impl<'n, 'v> PartialEq<Header<'n, 'v>> for OwnedHeader {
     fn eq(&self, other: &Header<'n, 'v>) -> bool {
         &self.0[..] == other.name() && &self.1[..] == other.value()
