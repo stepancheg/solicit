@@ -115,13 +115,13 @@ pub enum SendStatus {
 /// content within the frames.
 pub struct HttpConnection {
     /// HPACK decoder used to decode incoming headers before passing them on to the session.
-    decoder: hpack::Decoder<'static>,
+    pub decoder: hpack::Decoder<'static>,
     /// The HPACK encoder used to encode headers before sending them on this connection.
-    encoder: hpack::Encoder<'static>,
+    pub encoder: hpack::Encoder<'static>,
     /// Tracks the size of the outbound flow control window
-    out_window_size: WindowSize,
+    pub out_window_size: WindowSize,
     /// Tracks the size of the inbound flow control window
-    in_window_size: WindowSize,
+    pub in_window_size: WindowSize,
     /// The scheme of the connection
     pub scheme: HttpScheme,
 }
@@ -555,7 +555,7 @@ impl HttpConnection {
     }
 
     /// Internal helper method that decreases the outbound flow control window size.
-    fn decrease_out_window(&mut self, size: u32) -> HttpResult<()> {
+    pub fn decrease_out_window(&mut self, size: u32) -> HttpResult<()> {
         // The size by which we decrease the window must be at most 2^31 - 1. We should be able to
         // reach here only after sending a DATA frame, whose payload also cannot be larger than
         // that, but we assert it just in case.
@@ -566,7 +566,7 @@ impl HttpConnection {
     }
 
     /// Internal helper method that decreases the inbound flow control window size.
-    fn decrease_in_window(&mut self, size: u32) -> HttpResult<()> {
+    pub fn decrease_in_window(&mut self, size: u32) -> HttpResult<()> {
         // The size by which we decrease the window must be at most 2^31 - 1. We should be able to
         // reach here only after receiving a DATA frame, which would have been validated when
         // parsed from the raw frame to have the correct payload size, but we assert it just in
