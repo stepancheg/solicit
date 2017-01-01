@@ -2,6 +2,9 @@
 
 use std::io;
 use std::borrow::Cow;
+use std::fmt;
+
+use super::bs_debug::BsDebug;
 
 use http::StreamId;
 use http::frame::{FrameBuilder, FrameIR, Flag, Frame, FrameHeader, RawFrame, parse_padded_payload};
@@ -114,7 +117,6 @@ impl StreamDependency {
 /// A struct representing the HEADERS frames of HTTP/2, as defined in the
 /// HTTP/2 spec, section 6.2.
 #[derive(PartialEq)]
-#[derive(Debug)]
 #[derive(Clone)]
 pub struct HeadersFrame<'a> {
     /// The header fragment bytes stored within the frame.
@@ -127,6 +129,18 @@ pub struct HeadersFrame<'a> {
     pub padding_len: Option<u8>,
     /// The set of flags for the frame, packed into a single byte.
     flags: u8,
+}
+
+impl<'a> fmt::Debug for HeadersFrame<'a> {
+    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+        fmt.debug_struct("HeadersFrame")
+            .field("header_fragment", &BsDebug(&self.header_fragment))
+            .field("stream_id", &self.stream_id)
+            .field("stream_dep", &self.stream_dep)
+            .field("padding_len", &self.padding_len)
+            .field("flags", &self.flags)
+            .finish()
+    }
 }
 
 impl<'a> HeadersFrame<'a> {

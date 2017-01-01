@@ -1,9 +1,11 @@
 //! The module contains the implementation of the `DATA` frame and associated flags.
 
 use std::io;
+use std::fmt;
 use std::borrow::Cow;
 use http::StreamId;
 use http::frame::{FrameBuilder, FrameIR, Flag, Frame, FrameHeader, RawFrame, parse_padded_payload};
+use super::bs_debug::BsDebug;
 
 /// An enum representing the flags that a `DataFrame` can have.
 /// The integer representation associated to each variant is that flag's
@@ -45,7 +47,6 @@ impl<'a> From<&'a [u8]> for DataChunk<'a> {
 /// A struct representing the DATA frames of HTTP/2, as defined in the HTTP/2
 /// spec, section 6.1.
 #[derive(PartialEq)]
-#[derive(Debug)]
 #[derive(Clone)]
 pub struct DataFrame<'a> {
     /// The data found in the frame as an opaque byte sequence. It never
@@ -60,6 +61,17 @@ pub struct DataFrame<'a> {
     /// that the padding length is at most an unsigned integer value, we also
     /// keep a `u8`, instead of a `usize`.
     padding_len: Option<u8>,
+}
+
+impl<'a> fmt::Debug for DataFrame<'a> {
+    fn fmt(&self, fmt: &mut fmt::Formatter) -> fmt::Result {
+        fmt.debug_struct("DataFrame")
+            .field("data", &BsDebug(&self.data))
+            .field("flags", &self.flags)
+            .field("stream_id", &self.stream_id)
+            .field("padding_len", &self.padding_len)
+            .finish()
+    }
 }
 
 impl<'a> DataFrame<'a> {
